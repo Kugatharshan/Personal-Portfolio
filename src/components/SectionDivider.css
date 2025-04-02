@@ -1,0 +1,165 @@
+/* Section Divider Styles */
+.section-divider-new {
+  position: relative;
+  height: 120px;
+  background: #143046 ;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.divider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Space between circle and lines */
+}
+
+.divider-line {
+  flex-grow: 1; /* Ensures the lines take up full space */
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    #ffffff 25%,
+    #a0b1c5 50%,
+    #ffffff 75%,
+    transparent 100%
+  );
+  animation: borderFlow 3s linear infinite;
+  border-radius: 2px;
+}
+
+.divider-circle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  z-index: 2; /* Keep the circle above the line */
+}
+
+.circle-inner {
+  width: 20px;
+  height: 20px;
+  background: #a0b1c5;
+  border-radius: 50%;
+  animation: pulseInner 2s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(160, 177, 197, 0.5);
+}
+
+
+.circle-outer {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #a0b1c5;
+  border-radius: 50%;
+  animation: rotate 4s linear infinite;
+}
+
+.circle-outer::before,
+.circle-outer::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #a0b1c5;
+  border-radius: 50%;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.circle-outer::after {
+  bottom: -3px;
+  top: auto;
+}
+
+.divider-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #a0b1c5;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  top: 60%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+  bottom: 20%;
+  left: 40%;
+  animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+  top: 40%;
+  right: 30%;
+  animation-delay: 1s;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes pulseInner {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+    box-shadow: 0 0 15px rgba(160, 177, 197, 0.3);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(160, 177, 197, 0.8);
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 1;
+  }
+}

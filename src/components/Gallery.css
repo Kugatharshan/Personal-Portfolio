@@ -1,0 +1,425 @@
+#gallery {
+  background-color: #143046;
+  padding: 100px 0;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Background */
+#gallery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #143046;
+  pointer-events: none;
+  animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 3.5rem;
+  margin-bottom: 5rem;
+  color: #a0b1c5;
+  text-shadow: 2px 2px 4px #333;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 4px;
+  background: linear-gradient(90deg, #143046 , #a0b1c5, #143046 );
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: gradientMove 3s linear infinite;
+}
+
+.section-icon {
+  font-size: 3.5rem;
+  margin-right: 30px;
+  color: #a0b1c5;
+  animation: iconFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(230, 230, 250, 0.8));
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Gallery Item */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.gallery-item-content {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gallery Image */
+.gallery-item-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.gallery-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gallery Overlay */
+.gallery-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, #143046cc, #0b1a31e6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.gallery-item-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.gallery-item-icon {
+  font-size: 2rem;
+  color: #E6E6FA;
+  transition: all 0.4s ease;
+}
+
+/* Gallery Title */
+.gallery-item-title {
+  padding: 1.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.gallery-item-title h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.4s ease;
+}
+
+/* Hover Effects */
+.gallery-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px #1430464d;
+}
+
+.gallery-item:hover .gallery-item-image img {
+  transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  opacity: 1;
+}
+
+.gallery-item:hover .gallery-item-icon-wrapper {
+  transform: scale(1);
+  background: #143046cc;
+}
+
+.gallery-item:hover .gallery-item-icon {
+  transform: rotate(360deg);
+  color: #ffffff;
+}
+
+.gallery-item:hover .gallery-item-title {
+  background: #14304633;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Add delay to each gallery item's animation */
+.gallery-item:nth-child(1) { animation-delay: 0.2s; }
+.gallery-item:nth-child(2) { animation-delay: 0.4s; }
+.gallery-item:nth-child(3) { animation-delay: 0.6s; }
+.gallery-item:nth-child(4) { animation-delay: 0.8s; }
+.gallery-item:nth-child(5) { animation-delay: 1s; }
+.gallery-item:nth-child(6) { animation-delay: 1.2s; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2.8rem;
+  }
+  
+  .section-icon {
+    font-size: 2.8rem;
+  }
+  
+  .gallery-item-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .gallery-item-icon {
+    font-size: 1.5rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #143046, #E6E6FA);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #143046, #d8d8f0);
+}
+
+/* Modal Styles */
+.gallery-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 47, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  background: rgba(20, 48, 70, 0.95);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  animation: modalScaleIn 0.3s ease-out;
+}
+
+.modal-image-container {
+  position: relative;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+}
+
+.modal-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.modal-close svg {
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-icon svg {
+  font-size: 1.5rem;
+  color: #E6E6FA;
+}
+
+.modal-title h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Modal Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Zoom Effect on Image Hover in Modal */
+.modal-image-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Make gallery items clickable */
+.gallery-item {
+  cursor: pointer;
+}
+
+/* Responsive Modal Styles */
+@media (max-width: 768px) {
+  .gallery-modal {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    max-width: 95%;
+  }
+
+  .modal-title {
+    padding: 1rem;
+  }
+
+  .modal-title h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-close {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Add a subtle pulse animation to the modal icon */
+.modal-icon {
+  animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+} 

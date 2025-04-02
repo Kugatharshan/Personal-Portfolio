@@ -1,0 +1,231 @@
+/* Contact Section Styles */
+#contact {
+  background-color: #143046;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.05)"/></svg>');
+  opacity: 0.1;
+}
+
+.con-title{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.con-title p{
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.contact-description{
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #a0b1c5, transparent);
+  border-radius: 2px;
+}
+
+/* Contact Info Styles */
+.contact-info {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.contact-info:hover {
+  transform: translateY(-5px);
+}
+
+.contact-info h3 {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.contact-info h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #a0b1c5;
+  border-radius: 2px;
+}
+
+.contact-info span {
+  color: #a0b1c5;
+  font-size: 1.1rem;
+}
+
+.text-purple {
+  color: #a0b1c5;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.contact-info .d-flex:hover .text-purple {
+  color: #ffffff;
+}
+
+/* Social Links */
+.social-links {
+  margin-top: 2rem;
+}
+
+.social-links a {
+  color: #a0b1c5;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: #143046;
+}
+
+.social-links a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+/* Contact Form Styles */
+.contact-form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-label {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #a0b1c5;
+  box-shadow: 0 0 0 0.2rem rgba(160, 177, 197, 0.25);
+  color: #ffffff;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.con-btn-custom {
+  background: linear-gradient(45deg, #143046 , #143046 );
+  color: #143046;
+  border: 1px solid hsl(212, 24%, 50%) !important; 
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.con-btn-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #143046, #0b1a31); /* Light color change on hover */
+  color: #143046; /* Optional: Adjust text color if needed */
+  border: 1px solid hsl(212, 24%, 50%); /* Optional: Keep border same or change */
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  #contact {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .contact-info {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  #contact {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-info, .contact-form {
+    padding: 1.5rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .contact-info span {
+    font-size: 1rem;
+  }
+}

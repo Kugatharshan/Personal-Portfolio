@@ -1,0 +1,401 @@
+/* Modern Loader Styles */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Animated Circles */
+.loader-circles {
+  display: flex;
+  gap: 1rem;
+}
+
+.loader-circles span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #64ffda;
+  animation: circleScale 1.5s ease-in-out infinite;
+}
+
+.loader-circles span:nth-child(1) {
+  animation-delay: 0s;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.loader-circles span:nth-child(2) {
+  animation-delay: 0.2s;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.loader-circles span:nth-child(3) {
+  animation-delay: 0.4s;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.loader-circles span:nth-child(4) {
+  animation-delay: 0.6s;
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+@keyframes circleScale {
+  0%, 100% {
+    transform: scale(0.5);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animated Text */
+.loader-text {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.loader-text span {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  animation: textFloat 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.loader-text span:nth-child(1) { animation-delay: 0.1s; }
+.loader-text span:nth-child(2) { animation-delay: 0.2s; }
+.loader-text span:nth-child(3) { animation-delay: 0.3s; }
+.loader-text span:nth-child(4) { animation-delay: 0.4s; }
+.loader-text span:nth-child(5) { animation-delay: 0.5s; }
+.loader-text span:nth-child(6) { animation-delay: 0.6s; }
+.loader-text span:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes textFloat {
+  0%, 100% {
+    transform: translateY(0);
+    color: #ffffff;
+  }
+  50% {
+    transform: translateY(-10px);
+    color: #64ffda;
+  }
+}
+
+/* Progress Bar */
+.loader-progress {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, #64ffda, #00fff2);
+  animation: progress 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+@keyframes progress {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Glowing Background Effect */
+.loader-container::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .loader-circles span {
+    width: 15px;
+    height: 15px;
+  }
+
+  .loader-text span {
+    font-size: 1.5rem;
+  }
+
+  .loader-progress {
+    width: 150px;
+  }
+}
+
+/* Add smooth fade-out animation when removing loader */
+.loader-container.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Floating Bubbles */
+.bubbles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(100, 255, 218, 0.1);
+  border-radius: 50%;
+  opacity: 0;
+  animation: rise 15s infinite ease-in;
+}
+
+.bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 20%; animation-delay: 2s; width: 25px; height: 25px; }
+.bubble:nth-child(3) { left: 35%; animation-delay: 4s; }
+.bubble:nth-child(4) { left: 50%; animation-delay: 6s; width: 20px; height: 20px; }
+.bubble:nth-child(5) { left: 65%; animation-delay: 8s; }
+.bubble:nth-child(6) { left: 80%; animation-delay: 10s; width: 35px; height: 35px; }
+.bubble:nth-child(7) { left: 90%; animation-delay: 12s; }
+.bubble:nth-child(8) { left: 25%; animation-delay: 14s; }
+.bubble:nth-child(9) { left: 75%; animation-delay: 16s; }
+.bubble:nth-child(10) { left: 85%; animation-delay: 18s; }
+
+@keyframes rise {
+  0% {
+    bottom: -100px;
+    transform: translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(40px);
+  }
+  100% {
+    bottom: 100%;
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+
+/* Floating Icons */
+.floating-icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.floating-icons .icon {
+  position: absolute;
+  font-size: 2rem;
+  color: #64ffda;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.5));
+  animation: floatIcon 8s infinite ease-in-out;
+}
+
+.floating-icons .icon:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.floating-icons .icon:nth-child(2) {
+  top: 30%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.floating-icons .icon:nth-child(3) {
+  bottom: 30%;
+  left: 25%;
+  animation-delay: 4s;
+}
+
+.floating-icons .icon:nth-child(4) {
+  bottom: 20%;
+  right: 25%;
+  animation-delay: 6s;
+}
+
+
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, -10px) rotate(10deg);
+  }
+  50% {
+    transform: translate(-5px, 15px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(-10px, -5px) rotate(5deg);
+  }
+}
+
+/* Rotating Ring */
+.rotating-ring {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top-color: rgba(100, 255, 218, 0.3);
+  border-left-color: rgba(100, 255, 218, 0.1);
+  border-right-color: rgba(100, 255, 218, 0.2);
+  animation: rotate 8s linear infinite;
+}
+
+.rotating-ring::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top-color: rgba(100, 255, 218, 0.2);
+  border-left-color: rgba(100, 255, 218, 0.3);
+  border-right-color: rgba(100, 255, 218, 0.1);
+  animation: rotate 6s linear infinite reverse;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Progress Bar */
+.loader-progress {
+  position: relative;
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, #64ffda, #00fff2);
+  animation: progress 2s ease-in-out infinite;
+  position: relative;
+}
+
+.progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.8), transparent);
+  animation: progressGlow 2s linear infinite;
+}
+
+@keyframes progressGlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Enhanced Text Animation */
+.loader-text span {
+  animation: textGlow 2s ease-in-out infinite;
+  position: relative;
+}
+
+.loader-text span::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #64ffda;
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: underline 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(100, 255, 218, 0.3);
+  }
+  50% {
+    color: #64ffda;
+    text-shadow: 0 0 20px rgba(100, 255, 218, 0.8);
+  }
+}
+
+@keyframes underline {
+  0%, 100% { transform: scaleX(0); }
+  50% { transform: scaleX(1); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .floating-icons .icon {
+    font-size: 1.5rem;
+  }
+
+  .rotating-ring {
+    width: 150px;
+    height: 150px;
+  }
+
+  .bubble {
+    transform: scale(0.7);
+  }
+}
